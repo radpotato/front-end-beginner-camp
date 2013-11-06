@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<title>hello scope</title>
+	</head>
+	<body>
+		<script>
+			// variable value declaration
+			// var keyword = value {key:value}
+			// window.keyword = value {key:value};	
+			// global object window === global variable window
+			var x = 10; 
+			// type === Number
+			// same as var x = new Number(10);
+			// check constructor
+			var y = "xy";
+			// type === String
+			// same as var y = new String("xy");
+			// check consructor
+			var b = true // false
+			// type === boolean
+			// same as var b = new Bool(true);
+			// check constructor
+			var u = undefined;
+			// type === undefined;
+			// does not have constructor
+			var n = null;
+			// same undefined.
+			// but don't use memory.
+			var obj = {};
+			// type = Object
+			// same as var obj = new Object();
+			// but use short case;
+			var arr = [];
+			// type === Object
+			// same as var arr = new Array();
+			// but use short case;
+			
+			// test function
+			var assert = function() {
+				var length = arguments.length, 
+				testNode, i;
+				if(arguments.length > 0) {
+					for(i=0;i<length;i++) {
+						testNode = arguments[i].constructor ? arguments[i].constructor : arguments[i].prototype.constructor;
+						console.log(typeof(arguments[i]));
+						console.log(arguments[i]);
+						console.log(testNode);
+					}
+				} else {
+					console.log("error! enter the type check target!");
+				}
+			};
+			assert(x,y,b,obj,arr);
+
+		</script>
+	</body>
+</html>

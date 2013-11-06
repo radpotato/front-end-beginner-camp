@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>hello scope this!</title>
+</head>
+<body>
+	<button type="button" id="call" name="hey">call</button>
+	<div>test!</div>
+	<script>
+		var person = function(name) {
+			this.name = name;
+		}
+
+		person.prototype.getName = function() {
+			alert(this.name);
+		}
+
+		var babo = new person("choeun");
+		
+		//babo.getName();	
+		var babo2 = babo;
+
+		babo2.name = "choeun babo";
+	
+		//babo.getName();
+		//babo2.getName();
+
+		var call = document.getElementById("call");
+		call.onclick = babo.getName;
+
+		var prison = function(name) {
+			this.name = name;
+		}
+		
+		prison.prototype.getName = function() {
+			babo.getName();
+		}
+
+		var choeun = new prison("prisonal choeun");
+		//choeun.getName();
+	</script>
+</body>
+</html>

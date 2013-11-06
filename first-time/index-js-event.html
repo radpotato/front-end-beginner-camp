@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<title>hello event</title>
+	</head>
+	<body>
+		<div id="hell">text</div>
+		<input type="text" name="eName"/>
+		<script>
+			var hell = document.getElementById("hell");
+			// get element for event binding
+
+			hell.onclick = function() {
+				// real code
+			}
+
+			// addEventListener
+			// for event add
+
+			hell.addEventListener("click", function() { }, false);
+			// setEventListener (event, function, event order);
+			// but fxxxing IE Can't use addEventListener
+			// so we use another event listener
+
+			//hell.attechEvent("onclick", function() { });
+			// this is for IE
+			// so you can use this function
+			// but this code can't declarate modern browser
+			
+			
+			Object.prototype.addEvent = function(eventer, func, bubbling) {
+				if(this.addEventListener) { 
+					this.addEventListener(eventer, func, bubbling);
+				} else {
+					eventer.replace(eventer, "on"+eventer);
+					this.attachEvent(eventer, func);
+				}
+			}
+			hell.addEvent("click", function() { }, false);
+		</script>
+	</body>
+</html>

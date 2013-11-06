@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM</title>
+	</head>
+	<body>
+		<div id="korea"></div>
+		
+		<div id="txtTest">text</div>
+		
+		<div id="classNode" class="hello"></div>
+		<script>
+			var wind = window;
+			// global object window
+			// browser object model
+
+			var nav = navigator;
+			// same window.navigator
+			// all properties are inside window
+
+			var doc = document;
+			// same window.document
+			
+			var body = doc.body;
+			var head = doc.head;
+			var html = doc.documentElement;
+			// html > head
+			// html > body
+			
+			var kr = document.getElementById("korea");
+			// DOM ID Select
+			// fild element depend on idi
+			// same window.document.getElementById("korea");
+			// same doc.getElementById("korea");
+			// if you use jquery
+			// this selector are $("#korea")
+			// if you use mobile
+			// this selector changed document.querySelector("#korea");
+			// fast in modern browser
+
+			var txtTest = document.getElementById("txtTest");
+			var txtTestText = txtTest.innerText;
+			// find Text Node inside txtTest
+			// but some browser can't use innerText;
+			// for crossBrowsing you can use
+			// var txtTestText = txtTest.innerHTML;
+			// same document.getElementById("txtTest").innerText;
+		
+			var klassNode = document.getElementById("classNode");
+			var klass = klassNode.getAttribute("class");
+			// this is getting className depend on klassNode
+			klassNode.setAttribute("class","hello");
+			// this is setting className depend on klassNode
+			// but setAttribute can't use IE7. because browser does not support this function
+			// so if you want replace className
+			// you cans use this function
+			var setAttr = function(target, attr, val) {
+				if(target.setAttribute) {
+					target.setAttribute(attr,val);
+				} else {
+					target.attr = val;
+				}
+			}
+			setAttr(klassNode, "class", "hello");
+			// but some HTML Attribute's name is defferent on js
+			// ex:) html's class === js's className
+			// so you need replace class --> className;
+			// so i changed upside function 
+
+			var setAttrUpdate = function(target, attr, val) {
+				if(target.setAttribute) { 
+					target.setAttribute(attr,val);
+				} else {
+					if(attr.match("class") !== null) attr.replace("class","className");
+					target.attr = val;
+				}
+			}
+			setAttrUpdate(klassNode, "class", "hello");
+
+			// and you can use prototype
+			// but be careful; prototype is a little slow	
+			Object.prototype.prSetAttr = function(attr,val) {
+				if(this.setAttribute) { 
+					this.setAttribute(attr,val);
+				} else {
+					if(attr.match("class") !== null) attr.replace("class","className");
+					this.attr = val;
+				}
+			}
+			klassNode.prSetAttr("class", "hello");
+		</script>
+	</body>
+</html>

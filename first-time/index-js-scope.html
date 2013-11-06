@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<title>Hello Scope</title>
+	</head>
+	<body>
+		<script>
+			var global = "global";
+
+			var text = function() {
+				var global = global; // ???
+				global = "inner Text";
+				console.log(global); // ???
+			}
+
+			var text2 = function() {
+				global = "text changed";
+				console.log(global);
+			}
+			
+			text();
+			console.log(global) // ????
+
+			text2();
+			console.log(global) // ????
+		</script>	
+	</body>
+</html>
