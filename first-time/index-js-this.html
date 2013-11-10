@@ -10,35 +10,53 @@
 	<script>
 		var person = function(name) {
 			this.name = name;
+			this.nameValue = "babo";
 		}
+		// name parmetor = this.name
+		// this.name
 
 		person.prototype.getName = function() {
-			alert(this.name);
+			console.log(this);
+			//alert(this.name);
 		}
+		// getName;
 
 		var babo = new person("choeun");
-		
-		//babo.getName();	
-		var babo2 = babo;
+		// babo Object
 
+		//babo.getName(); // choeun
+		var babo2 = babo;
+		// 복사 x
+		// 참조 개념
+		// --- babo(choeun)
+		// --- babo2 = babo;
+		// --- babo2 // --- babo
+		// --- person[Main]
+		// --- babo2[Name] | babo[Name]
 		babo2.name = "choeun babo";
 	
-		//babo.getName();
-		//babo2.getName();
+		babo.getName(); // choeun babo
+		babo2.getName(); // choeun babo
 
 		var call = document.getElementById("call");
-		call.onclick = babo.getName;
-
+		call.onclick = babo.getName; // hey
+		// call.onclick = call.getName;
+		// onclick event 주체 call
+		// call === this;
 		var prison = function(name) {
 			this.name = name;
 		}
 		
 		prison.prototype.getName = function() {
+			console.log(babo);
+			console.log(this);
 			babo.getName();
+			// babo 객체
+			// babo 객체의 값
 		}
 
 		var choeun = new prison("prisonal choeun");
-		//choeun.getName();
+		choeun.getName();
 	</script>
 </body>
 </html>

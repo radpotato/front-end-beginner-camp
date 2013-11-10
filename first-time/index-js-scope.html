@@ -7,23 +7,34 @@
 	<body>
 		<script>
 			var global = "global";
-
+			// window.global = "global"
+			
 			var text = function() {
-				var global = global; // ???
+				var global = global; // "global";
+				// text Function 유효할 때만
+				// console.log(global) // "global";
 				global = "inner Text";
-				console.log(global); // ???
+				console.log(global); // "inner Text"
+			}
+			
+			var test = function() {
+				var x = [];
+				console.log(x);
 			}
 
 			var text2 = function() {
 				global = "text changed";
-				console.log(global);
+				console.log(global); // "text changed"
 			}
 			
 			text();
-			console.log(global) // ????
+			console.log(global) // "global"
 
 			text2();
-			console.log(global) // ????
+			console.log(global) // "text changed"
+
+			test();
+			console.log(x) // x is not defined
 		</script>	
 	</body>
 </html>

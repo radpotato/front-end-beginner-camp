@@ -2,7 +2,7 @@
 <html lang="ko">
 	<head>
 		<meta charset="UTF-8">
-		<title>DOM</title>
+		<title>Hello DOM</title>
 	</head>
 	<body>
 		<div id="korea"></div>
@@ -10,47 +10,59 @@
 		<div id="txtTest">text</div>
 		
 		<div id="classNode" class="hello"></div>
+		<script src="type-test.js"></script>
 		<script>
+			// DOM
+			// Document Object Model
+			
 			var wind = window;
 			// global object window
 			// browser object model
-
+			
 			var nav = navigator;
 			// same window.navigator
 			// all properties are inside window
-
+			// navigator.userAgent;
+			// var ua = navigator.userAgent;
+		
 			var doc = document;
 			// same window.document
 			
-			var body = doc.body;
-			var head = doc.head;
-			var html = doc.documentElement;
+			var body = doc.body; // document.body
+			var head = doc.head; // document.head
+			var html = doc.documentElement; // document.documentElement
+			// 변수 > 객체 (fast)
+			// JavaScript 성능 최적화 || front end 개발자를 위한 JavaScript
+			// 이 내용이 나와요.
 			// html > head
 			// html > body
 			
 			var kr = document.getElementById("korea");
-			// DOM ID Select
-			// fild element depend on idi
+			// kr = <div id="korea"></div>
+			// DOM ID Selector
+			// fild element depend on id
 			// same window.document.getElementById("korea");
 			// same doc.getElementById("korea");
 			// if you use jquery
 			// this selector are $("#korea")
-			// if you use mobile
+			// if you use mobile || modernBrowser (more than IE9)
 			// this selector changed document.querySelector("#korea");
 			// fast in modern browser
 
 			var txtTest = document.getElementById("txtTest");
 			var txtTestText = txtTest.innerText;
-			// find Text Node inside txtTest
+			// var txtTestText = document.getElementById("txtTest").innerText;
+			// find Text Node inside txtTest;
 			// but some browser can't use innerText;
-			// for crossBrowsing you can use
+			// for crossBrowsing you can use;
 			// var txtTestText = txtTest.innerHTML;
 			// same document.getElementById("txtTest").innerText;
 		
 			var klassNode = document.getElementById("classNode");
 			var klass = klassNode.getAttribute("class");
+			// klassNode.className;
 			// this is getting className depend on klassNode
-			klassNode.setAttribute("class","hello");
+			klassNode.setAttribute("class","helloyuuu");
 			// this is setting className depend on klassNode
 			// but setAttribute can't use IE7. because browser does not support this function
 			// so if you want replace className
@@ -88,7 +100,22 @@
 					this.attr = val;
 				}
 			}
-			klassNode.prSetAttr("class", "hello");
+			klassNode.prSetAttr("class", "hello");	
+			// JavaScript // Object
+			// 객체 typeof(dom) // 객체
+			// prototype -
+			// console.log("hello");
+			// console
+			// console.log = function(message) { [Native Code] }
+			// window.alert = function(message) { console.log(message); }
+			// window.log = function() { }
+			// var log = function(msg) {return msg}
+			// color
+			// RGB
+			// RGBA
+			// CMYK
+			// Hash Code
+			// HSL
 		</script>
 	</body>
 </html>

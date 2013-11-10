@@ -13,6 +13,7 @@
 
 			hell.onclick = function() {
 				// real code
+				// alert(this);
 			}
 
 			// addEventListener
@@ -23,21 +24,23 @@
 			// but fxxxing IE Can't use addEventListener
 			// so we use another event listener
 
-			//hell.attechEvent("onclick", function() { });
+			// hell.attachEvent("onclick", function() { });
 			// this is for IE
 			// so you can use this function
 			// but this code can't declarate modern browser
-			
 			
 			Object.prototype.addEvent = function(eventer, func, bubbling) {
 				if(this.addEventListener) { 
 					this.addEventListener(eventer, func, bubbling);
 				} else {
 					eventer.replace(eventer, "on"+eventer);
+					// this.attachEvent("on"+eventer, func);
 					this.attachEvent(eventer, func);
 				}
 			}
-			hell.addEvent("click", function() { }, false);
+			hell.addEvent("click", function() {console.log("hello");}, false);
+			// hell.addEvent("click", function() {console.log("what the ie");}, false);
+			// hell.onclick = function() {console.log("hellllllllllll")};
 		</script>
 	</body>
 </html>
