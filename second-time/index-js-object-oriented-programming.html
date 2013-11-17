@@ -1,0 +1,27 @@
+<script>
+/*
+	OOP
+	Object Oriented Programming 얘기해볼거에요...
+	모듈화라는 친구랑도 가까움...
+*/
+var memmel = function(name) {
+	this.name = name;
+	return this;
+};
+
+//var x = { };
+
+var dog = new memmel("dog");
+var cat = new memmel("cat");
+
+dog.age = 8;
+// 객체의 멤버를 빼는 방법
+
+var panda = new memmel(function() {
+	var name = "판다";
+	return name;
+}());
+console.log(dog);
+console.log(cat);
+console.log(panda);
+</script>

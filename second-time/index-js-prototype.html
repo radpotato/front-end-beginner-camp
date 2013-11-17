@@ -1,0 +1,29 @@
+<meta charset="UTF-8">
+<script>
+/*
+	prototype
+	-- 기본, 토대
+	
+	내가.... 써야하는... 것들...
+	상속
+	
+	prototype 자바스크립트의 기본 세팅들
+	alert();
+	
+*/
+var memmel = function(info) {
+	return memmel.dfn.init(info);
+};
+
+memmel.dfn = memmel.prototype = {
+	init : function(info) {
+		console.log(info);
+	}
+}
+var dog = new memmel({
+	name : "흰둥이",
+	owner: "짱구",
+	age  : 20
+});
+
+</script>

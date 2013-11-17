@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<title>Object Chain</title>
+	</head>
+	<body>
+		<script>
+			var x = window.x;
+			// JavaScript Object
+
+			// jQuery
+			// $("#hello").on("click", function() { });
+
+			var y = {
+				on : function() { },
+				obj : { },
+				num : 1,
+				str : "hello world"
+			};
+			y.on();
+
+			var z = {};
+			z.on = function() { };
+			z.on();
+
+			var log = function(chicken) {
+				console.log(chicken);
+			}
+			
+			log({
+				"맛있는치킨" : "후라이드치킨",
+				"치킨" : "양념치킨"
+			});
+
+			log(function(){
+				var chicken = "우웅치킨";
+				chicken = "치킨";
+				return chicken;
+			});
+			// 콜백함수
+			// jQuery Deffer 객체
+			// Promise Key 표현
+
+			console.log = function(message) {
+				alert(message);
+			}
+			// IE9 이하 console.log 작동을 안하는...........
+			// 그런 이슈가 있어요...
+			// IE....
+			// 수정 요함
+			if(!console) {
+				var console = new Console();
+			}
+		</script>
+	</body>
+</html>

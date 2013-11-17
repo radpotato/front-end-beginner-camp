@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<title>Scope Chain</title>
+	</head>
+	<body>
+		<div id="korea">text</div>
+		
+		<script>
+			var nation = function(name) {
+				this.targetNode = name;
+				return this;
+			}
+			nation.prototype.setFlag = function() {
+				this.targetNode = document.getElementById(this.targetNode);
+				return this;
+			}
+			nation.prototype.getText = function() {
+				return this.targetNode.innerHTML;	
+			}
+			nation.prototype.html = function(args) {
+				console.log(this);
+				this.targetNode.innerHTML = args;
+			}
+			nation.prototype = {
+				setFlag : function() { },
+				getText : function() { },
+				html    : function(args) { }
+			}
+			var korea = new nation("korea");
+			korea.setFlag().html("<div id='hell'>텍스트텍스트</div>");
+			var india = new nation("india");
+			india.setFlag();
+		</script>
+	</body>
+</html>
