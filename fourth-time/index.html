@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional/EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ko">
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+		<title>carousel</title>
+		<style type="text/css">
+			/* Reset.css */
+			/* Eric Meyer CSS Reset */
+			body {margin:0}
+			ul {margin:0;padding:0}
+			li {padding:0;list-style:none}
+			img {border:0} /* IE8 이하는 border 발생 */
+			/* Real Code */
+			.carousel { }
+			.carousel ul { }
+			.carousel li { }
+			.carousel li a { }
+			.carousel li a img { }
+		</style>
+	</head>
+	<body>
+		<!-- 무한반복되는 친구를 만들게요. -->
+		<div id="carousel" class="carousel">
+		<ul>
+			<li id="item1"><a href="#"><img src="http://imgshopping.naver.net/admin/iu/fm/221/256840/13/1127/5hbxa2ji45l.jpg" alt="따뜻한 기모 청바지"> 1</a></li>
+			<li id="item2"><a href="#"><img src="http://imgshopping.naver.net/admin/iu/fm/221/256840/13/1127/5hbxa2ji45l.jpg" alt="따뜻한 기모 청바지"> 2</a></li>
+			<li id="item3"><a href="#"><img src="http://imgshopping.naver.net/admin/iu/fm/221/256840/13/1127/5hbxa2ji45l.jpg" alt="따뜻한 기모 청바지"> 3</a></li>
+		</ul>
+		<a id="prevBtn" href="#item1">이전 상품 보기</a>
+		<a id="nextBtn" href="#item3">다음 상품 보기</a>
+		<p id="page"></p>
+		</div>
+		<!-- 무간섭 스크립팅 -->
+		<script type="text/javascript">
+			Node.prototype.addEvent = function(eventer, func, bubble) {
+				var evArr = eventer.split(" ");
+				for(i=0;i<evArr.length;i++) {
+					if(this.addEventListener) {
+						this.addEventListener(evArr[i], func, bubble);
+					} else {
+						this.attachEvent("on"+evArr[i], func);
+					}				
+				}
+			}
+
+			var carousel = function(option) {
+				// NODE
+				// BUTTON
+				var target = document.getElementById(option.target),
+				node = target.getElementsByTagName(option.node),
+				prevBtn = document.getElementById(option.button.prev),
+				nextBtn = document.getElementById(option.button.next),
+				reset = function() {
+				for(i=0;i<node.length;i+=1){node[i].style.display="none"}
+				},
+				total_length = node.length - 1,
+				onBox = function() {
+					reset();
+					if(option.page) {page.innerText = index+1}
+					node[index].style.display ="block";
+				},
+				index = option.index ? option.index : 0,
+				interval;
+				if(option.page) {
+					var page = document.getElementById(option.page);
+				}
+				onBox();
+				nextBtn.addEvent("click",function() {
+					index = index < total_length ? index + 1 : 0;
+					onBox();
+				}, false);
+				prevBtn.onclick = function() {
+					index = index <= 0 ? total_length : index - 1;
+					onBox();
+				}
+				for(i=0;i<node.length;i++) {
+					node[i].onmouseover = function() {
+						if(interval) {
+							clearInterval(interval);
+						}
+					}
+					node[i].onmouseout = function() {
+						intFunc();
+					}
+				}
+				var intFunc = function() {
+					interval = setInterval(function() {
+						index = index < total_length ? index + 1 : 0;	
+						onBox()
+					}, 1500);
+				}
+				intFunc();
+			}
+			carousel({
+				target : "carousel",
+				node : "li",
+				button : {prev:"prevBtn", next:"nextBtn"},
+				index : 0,
+				page : "page"
+			});
+
+			Node.prototype.addEvent = function(eventer, func, bubble) {
+				var evArr = eventer.split(" ");
+				for(i=0;i<evArr.length;i++) {
+					if(this.addEventListener) {
+						this.addEventListener(evArr[i], func, bubble);
+					} else {
+						this.attachEvent("on"+evArr[i], func);
+					}				
+				}
+			}
+			var x = document.createElement("div");
+			x.addEvent("click mouseover", function() {
+				console.log(this.innerHTML);
+			}, false);
+			x.innerHTML = "hello world";
+			document.body.appendChild(x);
+		</script>
+	</body>
+</html>

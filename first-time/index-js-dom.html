@@ -38,7 +38,13 @@
 			// html > body
 			
 			var kr = document.getElementById("korea");
+			// var kr = doc.getElementById("korea");
 			// kr = <div id="korea"></div>
+			console.log(kr);
+			
+			// hell.addEvent("click", function() {console.log("what the ie");}, false);
+			console.log(Element.prototype);
+			console.log(Document.prototype);
 			// DOM ID Selector
 			// fild element depend on id
 			// same window.document.getElementById("korea");
@@ -56,13 +62,15 @@
 			// but some browser can't use innerText;
 			// for crossBrowsing you can use;
 			// var txtTestText = txtTest.innerHTML;
+			// var txtTestText = txtText.innerText ? txtText.innerText : txtxText.textContent;
 			// same document.getElementById("txtTest").innerText;
 		
 			var klassNode = document.getElementById("classNode");
-			var klass = klassNode.getAttribute("class");
+			var klass = klassNode.getAttribute("href");
 			// klassNode.className;
 			// this is getting className depend on klassNode
 			klassNode.setAttribute("class","helloyuuu");
+			klassNode.href = "";
 			// this is setting className depend on klassNode
 			// but setAttribute can't use IE7. because browser does not support this function
 			// so if you want replace className
@@ -110,6 +118,9 @@
 			// window.alert = function(message) { console.log(message); }
 			// window.log = function() { }
 			// var log = function(msg) {return msg}
+			// console.log = function(msg) {
+			//	alert(msg)
+			// }
 			// color
 			// RGB
 			// RGBA

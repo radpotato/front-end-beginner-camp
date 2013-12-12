@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<title>Hello world</title>
+		<style>
+			dl,dt,dd {margin:0;padding:0}
+			.layer {position:absolute;padding:12px; width:280px; border:2px solid #9f9f9f;}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<a href="#">한국</a>은 푸른도시이며.. 음.. 이명박근혜가 대통령이고.. 음... 치킨은 맛있고.. 음... 네이버가 포털 1위고... 네이트는 망했고... <a href="#">다음</a>은 제주도에 사옥이 있고.. 듓님이 팀장이고..
+		</div>
+		<script>
+			var data = {"한국":"김연아올릭픽... 홍명보... 사랑해요 네이버.."};
+			var layer = document.createElement("div"),
+			    dl    = document.createElement("dl"),
+			    dt    = document.createElement("dt"),
+			    dd    = document.createElement("dd"),
+			    wrap  = document.getElementById("wrap"),
+			    anchor = wrap.getElementsByTagName("a");
+			    for(i=0;i<anchor.length;i+=1){
+				anchor[i].onmouseover = function() {
+					var rect = this.getBoundingClientRect();
+					dt.innerHTML = this.textContent;
+					dd.innerHTML = data[this.textContent];
+					dl.appendChild(dt);
+					dl.appendChild(dd);
+					layer.className = "layer";
+					layer.appendChild(dl);
+					layer.style.left = rect.left + "px";
+					layer.style.top = (rect.top + rect.height)+ "px";
+					document.body.appendChild(layer);
+					this.onmouseout = function() {
+						document.body.removeChild(layer);
+					}
+				}
+			    }
+		</script>
+	</body>
+</html>
