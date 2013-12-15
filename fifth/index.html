@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Hello world</title>
+	<style>
+		/* reset.css */
+		h1 {margin:0;padding:0}
+		ul,li {list-style:none;padding:0;margin:0}
+		img {border:0}
+		
+		/* image slide */
+		.slide {width:625px;position:relative;}
+		.slide h1 {font-size:12px;line-height:14px}
+		.slide .animation {overflow:hidden}
+		.slide .animation ul {padding:0 20px;}
+		.slide .animation li {float:left;width:107px;padding:0 5px;}
+		.slide .animation img {display:block;border:1px solid #6f6f6f}
+		.slide .btn_arr {position:absolute;left:0;top:50%;margin-top:-16px;display:block;width:18px;height:33px;background:url("http://static.naver.net/movie/2012/09/bg_sp_home2.png");text-indent:-9999px}
+		.slide .btn_arr_left {left:0;background-position:-400px 0}
+		.slide .btn_arr_right {left:auto;right:0;background-position:-420px 0}
+	</style>
+</head>
+<body>
+	<div id="slide" class="slide">
+		<h1>Image Slide</h1>
+		<div class="animation">
+			<ul id="list_left"></ul>
+			<ul id="list"></ul>
+			<ul id="list_right"></ul>
+		</div>
+		<a href="#" id="btn_left" class="btn_arr btn_arr_left">이전</a>
+		<a href="#" id="btn_right" class="btn_arr btn_arr_right">다음</a>
+	</div>
+	<script src="data.js"></script>
+	<script src="slide.js"></script>
+	<script>
+		var index,
+		slide = function(index) {
+			imageSlide("list").resetNode().slide(index);
+			imageSlide("list_left").resetNode().slide(index-1).css("position:absolute;left:-625px");
+			imageSlide("list_right").resetNode().slide(index+1).css("position:absolute;left:625px");
+			imageSlide("btn_left").on("click", function() {
+				index -= 1;
+				slide(index);
+			}, false);
+			imageSlide("btn_right").on("click", function() {
+				index += 1;
+				slide(index);
+			}, false);
+		}
+		slide(1);
+		//imageSlide("list").slide(1);
+		//imageSlide("list_left").slide(0);
+		//imageSlide("list_right").slide(2);
+		imageSlide("slide").css("overflow:hidden");
+	</script>
+</body>
+</html>
