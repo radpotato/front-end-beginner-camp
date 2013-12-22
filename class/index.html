@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Hello World</title>
+</head>
+<body>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="korea"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+	<span class="japan"></span>
+<script>
+	var selector = function(cc) {
+		var tags = document.body.getElementsByTagName("*"),
+		tmpTags = [],
+		j = 0;
+		for(var i = 0; i < tags.length; i+=1) {
+			if(tags[i].className === cc) {
+				tmpTags[j] = tags[i];
+				j+=1;		
+			}
+		}
+		return tmpTags;
+	}
+	var x = selector("korea");
+	console.log(x);
+</script>
+</body>
+</html>

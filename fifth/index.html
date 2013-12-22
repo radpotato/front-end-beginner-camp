@@ -10,10 +10,10 @@
 		img {border:0}
 		
 		/* image slide */
-		.slide {width:625px;position:relative;}
+		.slide {width:625px;height:190px;position:relative;}
 		.slide h1 {font-size:12px;line-height:14px}
-		.slide .animation {overflow:hidden}
-		.slide .animation ul {padding:0 20px;}
+		.slide .animation {overflow:hidden;height:190px}
+		.slide .animation ul {width:625px;padding:0 20px;overflow:hidden}
 		.slide .animation li {float:left;width:107px;padding:0 5px;}
 		.slide .animation img {display:block;border:1px solid #6f6f6f}
 		.slide .btn_arr {position:absolute;left:0;top:50%;margin-top:-16px;display:block;width:18px;height:33px;background:url("http://static.naver.net/movie/2012/09/bg_sp_home2.png");text-indent:-9999px}
@@ -24,7 +24,7 @@
 <body>
 	<div id="slide" class="slide">
 		<h1>Image Slide</h1>
-		<div class="animation">
+		<div id="mask" class="animation">
 			<ul id="list_left"></ul>
 			<ul id="list"></ul>
 			<ul id="list_right"></ul>
@@ -36,6 +36,7 @@
 	<script src="slide.js"></script>
 	<script>
 		var index,
+		scope = 0,
 		slide = function(index) {
 			imageSlide("list").resetNode().slide(index);
 			imageSlide("list_left").resetNode().slide(index-1).css("position:absolute;left:-625px");
@@ -46,7 +47,7 @@
 			}, false);
 			imageSlide("btn_right").on("click", function() {
 				index += 1;
-				slide(index);
+				slide(index);	
 			}, false);
 		}
 		slide(1);

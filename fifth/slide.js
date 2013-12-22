@@ -35,6 +35,9 @@
 			},
 			css : function(styleAttr) {
 				this.target.setAttribute("style", styleAttr);
-				return this;
+				return this;	
+			},
+			fn : function(func) {
+				func(this);
 			}
 		}
